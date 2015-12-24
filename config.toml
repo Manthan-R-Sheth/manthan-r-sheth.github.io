@@ -1,4 +1,4 @@
-baseurl = "http://manthan-r-sheth.github.io/"
+baseurl = "https://github.com/Manthan-R-Sheth/manthan-r-sheth.github.io/"
 languageCode = "en-us"
 title = "My New Hugo Site"
 newContentEditor = "nano"
