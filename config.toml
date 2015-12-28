@@ -1,6 +1,6 @@
-baseurl = "https://github.com/Manthan-R-Sheth/manthan-r-sheth.github.io/"
+baseurl = "/"
 languageCode = "en-us"
 title = "My New Hugo Site"
 newContentEditor = "nano"
-theme = "air"
+theme = "lanyon-hugo"
 pygmentsStyle = "native"
