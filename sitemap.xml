@@ -6,4 +6,12 @@
     <priority>0</priority>
   </url>
   
+  <url>
+    <loc>/</loc>
+  </url>
+  
+  <url>
+    <loc>/1/01/01/</loc>
+  </url>
+  
 </urlset>
