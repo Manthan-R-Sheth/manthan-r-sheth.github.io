@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Project NAINA  &middot; A blog</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="" />
+
+<meta name="keywords" content="">
+
+
+<meta property="og:title" content="Project NAINA  &middot; A blog ">
+<meta property="og:site_name" content="A blog"/>
+<meta property="og:url" content="/2016/03/23/project-naina/" />
+<meta property="og:locale" content="en-us">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content=""/>
+<meta property="og:article:published_time" content="2016-03-23T00:00:00Z" />
+<meta property="og:article:modified_time" content="2016-03-23T00:00:00Z" />
+
+  
+
+  
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "Project NAINA",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2016-03-23",
+    "description": "",
+    "wordCount":  712 
+  }
+</script>
+
+
+
+<link rel="canonical" href="/2016/03/23/project-naina/" />
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+<link href="/favicon.png" rel="icon">
+
+<meta name="generator" content="Hugo 0.15" />
+
+  <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+
+
+    <link rel="stylesheet" href="/css/theme/default.css">
+
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/style.css">
+
+
+  <link rel="stylesheet" href="/css/highlight/default.css">
+
+
+</head>
+<body>
+    <header id="main-header">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">A blog</a>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          
+          <li>
+
+            <a href="/about"
+            >
+
+            
+                <i class="fa fa-info-circle"></i>
+            
+            
+            About
+            </a>
+          </li>
+          
+          <li>
+
+            <a href="/post"
+             title="Show list of posts">
+
+            
+            
+            Posts
+            </a>
+          </li>
+          
+          <li>
+
+            <a href="/tags"
+             title="Show list of tags">
+
+            
+            
+            Tags
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+      
+    </div>
+  </nav>
+
+</header>
+
+
+<div class="container">
+<div class="row">
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <div class="text-center">
+
+    <h1>Project NAINA
+</h1>
+
+    <div class="metas">
+<small>
+  <i class="fa fa-calendar"></i>
+  <time datetime="2016-03-23">23 Mar, 2016</time>
+</small>
+
+
+  <small>
+  &middot; Read in about 4 min
+  &middot; (712 Words)
+</small>
+
+
+<div class="margin-10">
+
+</div>
+<br>
+</div>
+
+  </div>
+</div>
+
+  <div class="container content">
+  
+
+<p>It stands for :- New Artificial Intelligence with Natural Augmentation.</p>
+
+<p>The aim of the project was to make a cardboard app in which 3-D drawing could be done. This idea can then be extended to allow 3-D modelling of robots and other structures.</p>
+
+<h2 id="tracking-the-users-s-hand-motion">Tracking the users&rsquo;s hand motion.</h2>
+
+<blockquote>
+<p><strong>Technology used :</strong></p>
+
+<ul>
+<li><p><kbd>IMU 6050</kbd> along with Arduino UNO.
+Difficulty in transferring the data obtained to the cardboard android app made me drop the idea of using the sensor.</p></li>
+
+<li><p><kbd>Android Acelerometer</kbd> and Gyroscope data.
+The data provided by android&rsquo;s built in sensors is highly sensitive and callibrating it becomes very difficult. Double integrating it to obtain the distance co-ordinates is not possible as it leads to highly errornous data. This made me drop ths idea too.</p></li>
+</ul>
+
+<p><strong>Solution :</strong></p>
+
+<ul>
+<li>Finally I made use of the concept of<kbd>Stereographic Vision</kbd>to overcome the problem.
+Two webcams separated by a known distance can be appropiately used to get the exact 3 dimensional co-ordinates a point in space.</li>
+</ul>
+</blockquote>
+
+<h4 id="more-to-the-idea-of-stereographic-vision"><strong>More to the idea of Stereographic Vision.</strong></h4>
+
+<p>The concept is exactly what our eyes use to see things around us. Each webcam corresponding to each eye. Each webcam produces its own image of the same point in space. Trigonometric relations can then be used to get the exact space co-ordinates of the point.</p>
+
+<h4 id="determing-a-point-corresponding-to-user-s-hand"><strong>Determing a point corresponding to user&rsquo;s hand.</strong></h4>
+
+<p>Having figured out how to get the co-ordinates of the point in space, getting a point corresponding to the user&rsquo;s hand was the next task.</p>
+
+<blockquote>
+<ul>
+<li>I used Image Processing for overcoming the task.</li>
+<li>Tracking a particular colour was the intial approach but background noises of the same colour were the major source of challenge.</li>
+<li>Then the simple concept of luminous body was applied. A luminous body appears white to the webcam irrespective of anything else. So I pasted red coloured cellophane paper to the webcam to filter the actual white colour.</li>
+<li>The only white colour seen by the webcams would be due to the luminous object and nothing else. (white colour would appear red to the webcams because of the cellophane filter).</li>
+<li>OpenCV for JAVA was used to get the white object whose mean was then calculated to obtain a point.</li>
+</ul>
+</blockquote>
+
+<p>Yipeeee!!!!! Hurdle 1 solved!!! :D</p>
+
+<h2 id="transmission-medium">Transmission Medium</h2>
+
+<p>Though not an issue but worth mentioning as it was a part of the project.</p>
+
+<blockquote>
+<p>Two ways that could be used for the purpose were :-</p>
+
+<ul>
+<li>Involving a third party server like a Python or NodeJS server.</li>
+<li>Using Sockets - Server and Client Sockets.</li>
+</ul>
+</blockquote>
+
+<h2 id="rendering-the-lines-from-the-co-ordinates-obtained">Rendering the lines from the co-ordinates obtained.</h2>
+
+<p>Once the co-ordinates are obtained from one of the above methods, the next and final task was to plot it in the cardboard android app.</p>
+
+<blockquote>
+<p><strong>Unity - A lucrative Choice!!</strong></p>
+
+<ul>
+<li>Unity engine seemed a lucrative choice and it definitely made plotting easiar. But in the course if using it, two probably unsolvable issues arose.</li>
+<li>Unity doesn&rsquo;t have the support for sockets. Third party libs like Unity Photon Network Lib need to be used. In my case the use of third party server was the solution. But&hellip;..</li>
+<li>The Line Renderer in Unity which is used to draw lines between points works incorrectly when you want to draw discrete figures. Line Renderer draws lines continuously making the 3D drawing erronous in my case.</li>
+</ul>
+</blockquote>
+
+<p>After a great deal of research on this&hellip;&hellip; finally figured a way out!!!</p>
+
+<blockquote>
+<p><strong>OpenGL to the rescue!!</strong></p>
+
+<p>I decided to shift from unity to OpenGL for android.
+ This solved both my problems. I could use sockets as well as could draw discrete figures using OpenGL.
+ The concept I used was to draw cubes with the co-ordinates obtained as the center of the cube. Keeping the size of the cubes quite small, series of cubes appeared like a continuous line.</p>
+</blockquote>
+
+<p>Ahh!!! Work done!!!!</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>To sum it up, Project NAINA involved a wide dimension of technologies that was used to make it a successful product. At the end of the project, the user  (with a torch in his hand and in the field of view of the webcams) could move the torch and draw any pattern. This pattern could be seen in the in app running in the Virtual Reality Kit which made the user feel that he was drawing in a wide 3D space.
+The idea could be extended to work wonders!!!</p>
+
+</div>
+
+
+  <footer>
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      
+  
+
+
+</div>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  
+
+</div>
+
+</footer>
+
+
+</div>
+</div>
+      <footer class="footer">
+    <div class="container hidden-print">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+           <div class="pull-left">
+  <a class="toplink" href="#">back to top</a>
+</div>
+<div class="pull-right">
+  
+  <a href="/license" >license</a>
+  
+</div>
+
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+          <small>
+              
+    
+<div class="container footline">
+  
+  Copyright © 2015. All rights reserved.
+
+
+</div>
+
+
+    
+
+
+          </small>
+        </div>
+     </div>
+    </div>
+</footer>
+
+    <script src="/js/jquery.min-2.1.4.js"></script>
+<script src="/js/bootstrap.min-3.3.5.js"></script>
+
+
+
+
+<script src="/js/highlight.pack.js"></script>
+<script src="/js/site.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+  </body>
+</html>
+
