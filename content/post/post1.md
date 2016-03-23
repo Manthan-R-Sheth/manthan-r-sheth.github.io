@@ -1,218 +1,81 @@
-Welcome to StackEdit!
+Project N.A.I.N.A.
 ===================
 
 
-Hey! I'm your first Markdown document in **StackEdit**[^stackedit]. Don't delete me, I'm very helpful! I can be recovered anyway in the **Utils** tab of the <i class="icon-cog"></i> **Settings** dialog.
+It stands for :- New Artificial Intelligence with Natural Augmentation.
 
-----------
+The aim of the project was to make a cardboard app in which 3-D drawing could be done. This idea can then be extended to allow 3-D modelling of robots and other structures.
 
-
-Documents
+Tracking the users's hand motion.
 -------------
+> **Technology used :**
 
-StackEdit stores your documents in your browser, which means all your documents are automatically saved locally and are accessible **offline!**
+> - <kbd>IMU 6050</kbd> along with Arduino UNO.
+	Difficulty in transferring the data obtained to the cardboard android app made me drop the idea of using the sensor. 
+	
+> - <kbd>Android Acelerometer</kbd> and Gyroscope data.
+	The data provided by android's built in sensors is highly sensitive and callibrating it becomes very difficult. Double integrating it to obtain the distance co-ordinates is not possible as it leads to highly errornous data. This made me drop ths idea too.
 
-> **Note:**
+> **Solution :** 
 
-> - StackEdit is accessible offline after the application has been loaded for the first time.
-> - Your local documents are not shared between different browsers or computers.
-> - Clearing your browser's data may **delete all your local documents!** Make sure your documents are synchronized with **Google Drive** or **Dropbox** (check out the [<i class="icon-refresh"></i> Synchronization](#synchronization) section).
+> -  Finally I made use of the concept of<kbd>Stereographic Vision</kbd>to overcome the problem. 
+> Two webcams separated by a known distance can be appropiately used to get the exact 3 dimensional co-ordinates a point in space.
 
-#### <i class="icon-file"></i> Create a document
+#### **More to the idea of Stereographic Vision.**
 
-The document panel is accessible using the <i class="icon-folder-open"></i> button in the navigation bar. You can create a new document by clicking <i class="icon-file"></i> **New document** in the document panel.
+The concept is exactly what our eyes use to see things around us. Each webcam corresponding to each eye. Each webcam produces its own image of the same point in space. Trigonometric relations can then be used to get the exact space co-ordinates of the point.
 
-#### <i class="icon-folder-open"></i> Switch to another document
+#### **Determing a point corresponding to user's hand.**
 
-All your local documents are listed in the document panel. You can switch from one to another by clicking a document in the list or you can toggle documents using <kbd>Ctrl+[</kbd> and <kbd>Ctrl+]</kbd>.
+Having figured out how to get the co-ordinates of the point in space, getting a point corresponding to the user's hand was the next task.
 
-#### <i class="icon-pencil"></i> Rename a document
+> - I used Image Processing for overcoming the task. 
+> - Tracking a particular colour was the intial approach but background noises of the same colour were the major source of challenge.
+> - Then the simple concept of luminous body was applied. A luminous body appears white to the webcam irrespective of anything else. So I pasted red coloured cellophane paper to the webcam to filter the actual white colour.
+> - The only white colour seen by the webcams would be due to the luminous object and nothing else. (white colour would appear red to the webcams because of the cellophane filter).
+> - OpenCV for JAVA was used to get the white object whose mean was then calculated to obtain a point.
 
-You can rename the current document by clicking the document title in the navigation bar.
-
-#### <i class="icon-trash"></i> Delete a document
-
-You can delete the current document by clicking <i class="icon-trash"></i> **Delete document** in the document panel.
-
-#### <i class="icon-hdd"></i> Export a document
-
-You can save the current document to a file by clicking <i class="icon-hdd"></i> **Export to disk** from the <i class="icon-provider-stackedit"></i> menu panel.
-
-> **Tip:** Check out the [<i class="icon-upload"></i> Publish a document](#publish-a-document) section for a description of the different output formats.
+Yipeeee!!!!! Hurdle 1 solved!!! :D 
 
 
-----------
+Transmission Medium
+-------------
+Though not an issue but worth mentioning as it was a part of the project.
 
+> Two ways that could be used for the purpose were :- 
 
-Synchronization
+> - Involving a third party server like a Python or NodeJS server.
+> - Using Sockets - Server and Client Sockets.
+
+Rendering the lines from the co-ordinates obtained.
 -------------------
 
-StackEdit can be combined with <i class="icon-provider-gdrive"></i> **Google Drive** and <i class="icon-provider-dropbox"></i> **Dropbox** to have your documents saved in the *Cloud*. The synchronization mechanism takes care of uploading your modifications or downloading the latest version of your documents.
+Once the co-ordinates are obtained from one of the above methods, the next and final task was to plot it in the cardboard android app.
 
-> **Note:**
+> **Unity - A lucrative Choice!!**
 
-> - Full access to **Google Drive** or **Dropbox** is required to be able to import any document in StackEdit. Permission restrictions can be configured in the settings.
-> - Imported documents are downloaded in your browser and are not transmitted to a server.
-> - If you experience problems saving your documents on Google Drive, check and optionally disable browser extensions, such as Disconnect.
+> - Unity engine seemed a lucrative choice and it definitely made plotting easiar. But in the course if using it, two probably unsolvable issues arose.
+> - Unity doesn't have the support for sockets. Third party libs like Unity Photon Network Lib need to be used. In my case the use of third party server was the solution. But.....
+> - The Line Renderer in Unity which is used to draw lines between points works incorrectly when you want to draw discrete figures. Line Renderer draws lines continuously making the 3D drawing erronous in my case.
 
-#### <i class="icon-refresh"></i> Open a document
+After a great deal of research on this...... finally figured a way out!!!
 
-You can open a document from <i class="icon-provider-gdrive"></i> **Google Drive** or the <i class="icon-provider-dropbox"></i> **Dropbox** by opening the <i class="icon-refresh"></i> **Synchronize** sub-menu and by clicking **Open from...**. Once opened, any modification in your document will be automatically synchronized with the file in your **Google Drive** / **Dropbox** account.
+>  **OpenGL to the rescue!!**
 
-#### <i class="icon-refresh"></i> Save a document
+>  I decided to shift from unity to OpenGL for android.
+>  This solved both my problems. I could use sockets as well as could draw discrete figures using OpenGL.
+>  The concept I used was to draw cubes with the co-ordinates obtained as the center of the cube. Keeping the size of the cubes quite small, series of cubes appeared like a continuous line.
 
-You can save any document by opening the <i class="icon-refresh"></i> **Synchronize** sub-menu and by clicking **Save on...**. Even if your document is already synchronized with **Google Drive** or **Dropbox**, you can export it to a another location. StackEdit can synchronize one document with multiple locations and accounts.
+Ahh!!! Work done!!!! 
 
-#### <i class="icon-refresh"></i> Synchronize a document
 
-Once your document is linked to a <i class="icon-provider-gdrive"></i> **Google Drive** or a <i class="icon-provider-dropbox"></i> **Dropbox** file, StackEdit will periodically (every 3 minutes) synchronize it by downloading/uploading any modification. A merge will be performed if necessary and conflicts will be detected.
 
-If you just have modified your document and you want to force the synchronization, click the <i class="icon-refresh"></i> button in the navigation bar.
+Conclusion
+-------------------
+To sum it up, Project NAINA involved a wide dimension of technologies that was used to make it a successful product. At the end of the project, the user  (with a torch in his hand and in the field of view of the webcams) could move the torch and draw any pattern. This pattern could be seen in the in app running in the Virtual Reality Kit which made the user feel that he was drawing in a wide 3D space.
+The idea could be extended to work wonders!!!
 
-> **Note:** The <i class="icon-refresh"></i> button is disabled when you have no document to synchronize.
 
-#### <i class="icon-refresh"></i> Manage document synchronization
 
-Since one document can be synchronized with multiple locations, you can list and manage synchronized locations by clicking <i class="icon-refresh"></i> **Manage synchronization** in the <i class="icon-refresh"></i> **Synchronize** sub-menu. This will let you remove synchronization locations that are associated to your document.
 
-> **Note:** If you delete the file from **Google Drive** or from **Dropbox**, the document will no longer be synchronized with that location.
 
-----------
-
-
-Publication
--------------
-
-Once you are happy with your document, you can publish it on different websites directly from StackEdit. As for now, StackEdit can publish on **Blogger**, **Dropbox**, **Gist**, **GitHub**, **Google Drive**, **Tumblr**, **WordPress** and on any SSH server.
-
-#### <i class="icon-upload"></i> Publish a document
-
-You can publish your document by opening the <i class="icon-upload"></i> **Publish** sub-menu and by choosing a website. In the dialog box, you can choose the publication format:
-
-- Markdown, to publish the Markdown text on a website that can interpret it (**GitHub** for instance),
-- HTML, to publish the document converted into HTML (on a blog for example),
-- Template, to have a full control of the output.
-
-> **Note:** The default template is a simple webpage wrapping your document in HTML format. You can customize it in the **Advanced** tab of the <i class="icon-cog"></i> **Settings** dialog.
-
-#### <i class="icon-upload"></i> Update a publication
-
-After publishing, StackEdit will keep your document linked to that publication which makes it easy for you to update it. Once you have modified your document and you want to update your publication, click on the <i class="icon-upload"></i> button in the navigation bar.
-
-> **Note:** The <i class="icon-upload"></i> button is disabled when your document has not been published yet.
-
-#### <i class="icon-upload"></i> Manage document publication
-
-Since one document can be published on multiple locations, you can list and manage publish locations by clicking <i class="icon-upload"></i> **Manage publication** in the <i class="icon-provider-stackedit"></i> menu panel. This will let you remove publication locations that are associated to your document.
-
-> **Note:** If the file has been removed from the website or the blog, the document will no longer be published on that location.
-
-----------
-
-
-Markdown Extra
---------------------
-
-StackEdit supports **Markdown Extra**, which extends **Markdown** syntax with some nice features.
-
-> **Tip:** You can disable any **Markdown Extra** feature in the **Extensions** tab of the <i class="icon-cog"></i> **Settings** dialog.
-
-> **Note:** You can find more information about **Markdown** syntax [here][2] and **Markdown Extra** extension [here][3].
-
-
-### Tables
-
-**Markdown Extra** has a special syntax for tables:
-
-Item     | Value
--------- | ---
-Computer | $1600
-Phone    | $12
-Pipe     | $1
-
-You can specify column alignment with one or two colons:
-
-| Item     | Value | Qty   |
-| :------- | ----: | :---: |
-| Computer | $1600 |  5    |
-| Phone    | $12   |  12   |
-| Pipe     | $1    |  234  |
-
-
-### Definition Lists
-
-**Markdown Extra** has a special syntax for definition lists too:
-
-Term 1
-Term 2
-:   Definition A
-:   Definition B
-
-Term 3
-
-:   Definition C
-
-:   Definition D
-
-	> part of definition D
-
-
-### Fenced code blocks
-
-GitHub's fenced code blocks are also supported with **Highlight.js** syntax highlighting:
-
-```
-// Foo
-var bar = 0;
-```
-
-> **Tip:** To use **Prettify** instead of **Highlight.js**, just configure the **Markdown Extra** extension in the <i class="icon-cog"></i> **Settings** dialog.
-
-> **Note:** You can find more information:
-
-> - about **Prettify** syntax highlighting [here][5],
-> - about **Highlight.js** syntax highlighting [here][6].
-
-
-### Footnotes
-
-You can create footnotes like this[^footnote].
-
-  [^footnote]: Here is the *text* of the **footnote**.
-
-
-### SmartyPants
-
-SmartyPants converts ASCII punctuation characters into "smart" typographic punctuation HTML entities. For example:
-
-|                  | ASCII                        | HTML              |
- ----------------- | ---------------------------- | ------------------
-| Single backticks | `'Isn't this fun?'`            | 'Isn't this fun?' |
-| Quotes           | `"Isn't this fun?"`            | "Isn't this fun?" |
-| Dashes           | `-- is en-dash, --- is em-dash` | -- is en-dash, --- is em-dash |
-
-
-### Table of contents
-
-You can insert a table of contents using the marker `[TOC]`:
-
-[TOC]
-
-
-### MathJax
-
-You can render *LaTeX* mathematical expressions using **MathJax**, as on [math.stackexchange.com][1]:
-
-The *Gamma function* satisfying $\Gamma(n) = (n-1)!\quad\forall n\in\mathbb N$ is via the Euler integral
-
-$$
-\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
-$$
-
-> **Tip:** To make sure mathematical expressions are rendered properly on your website, include **MathJax** into your template:
-
-```
-<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
-```
-
-> **Note:** You can find more information about **LaTeX** mathematical expressions [here][4].
